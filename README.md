@@ -1,2 +1,2 @@
 # Estudos-Python-Modulo-1
- Neste repositório estão salvos os meus projetos de python do meu primeiro módulo
+ Neste repositório estão salvos os meus projetos de python do meu curso da udemy.
