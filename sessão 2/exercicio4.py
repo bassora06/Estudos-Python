@@ -54,11 +54,11 @@ for i in range(8):
 
     if resposta == perguntas[i]['resposta']:
         pontos += 1
-        print('resposta correta')
+        print('resposta correta✔️')
         time.sleep(2)
         os.system('cls')
     else:
-        print('resposta incorreta')
+        print('resposta incorreta❌')
         time.sleep(2)
         os.system('cls')
 
