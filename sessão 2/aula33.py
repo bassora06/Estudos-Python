@@ -3,10 +3,7 @@ try:
     a = 10
     b = 2
     c = a / b
-    print(lista[2])
-except ZeroDivisionError:
-    print('Erro: Divisão com zero')
-except NameError:
-    print('Nome de variável não definido')
-except IndexError:
-    print('Lista não possui essa quantidade de indíces')
+    print(lista[0])
+except( NameError, ZeroDivisionError, IndexError) as error:
+    print('Erro: ', error)
+    print('Tipo: ', error.__class__.__name__)
