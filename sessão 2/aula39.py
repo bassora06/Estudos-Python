@@ -11,7 +11,11 @@
 # print(variavel)
 # print(*sys.path, sep='\n')
 
-from aula39Package import modulo, moduloB
+# from aula39Package import modulo, moduloB
 
-print(__name__)
-moduloB.falaOi()
+# print(__name__)
+# moduloB.falaOi()
+
+from aula39Package import soma, nomeVariavel, falaOi
+
+print(soma(4, 5))
