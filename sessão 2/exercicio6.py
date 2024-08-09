@@ -1,37 +1,29 @@
-produtos = [
-    {'nome': 'produto 4', 'preço' : 105.87},
-    {'nome': 'produto 2', 'preço' : 22.32},
-    {'nome': 'produto 3', 'preço' : 10.11},
-    {'nome': 'produto 1', 'preço' : 10.00},
-    {'nome': 'produto 5', 'preço' : 69.90},
-]
+import copy
+
+from dados import produtos
+
+
 
 novosProdutos = [
-    {**produto, 'preço' : produto['preço'] + (produto['preço'] * 10) / 100} 
-    for produto in produtos
-
+    {**p, 'preço': round(p['preço']* 1.1, 2)}
+      for p in copy.deepcopy(produtos)
 ]
 
-produtosOrdenadosPorNome = [
-    {'nome' : produto['nome'], **produto}
-    for produto in produtos
-]
+produtosOrdenadosPorNome = sorted(
+    copy.deepcopy(produtos),
+    key=lambda p: p['nome']
+)
 
+produtosOrdenadosPorPreco = sorted(
+    copy.deepcopy(produtos),
+    key=lambda p: p['preço']
+)
 
-produtosOrdenadosPorPreco = sorted(produtos)
-
-# for produto in novosProdutos:
-#     for nome, valor in produto.items():
-#         print(f'{nome} : {valor}')
-#     print()
-
-# for produto in produtosOrdenadosPorNome:
-#     for nome, valor in produto.items():
-#         print(f'{nome} : {valor}')
-#     print()
     
-
-for produto in produtosOrdenadosPorPreco:
-    for nome, valor in produto.items():
-        print(f'{nome} : {valor}')
-    print()
+print(*produtos, sep='\n')
+print()
+print(*novosProdutos, sep='\n')
+print()
+print(*produtosOrdenadosPorNome, sep='\n')
+print()
+print(*produtosOrdenadosPorPreco, sep='\n')
