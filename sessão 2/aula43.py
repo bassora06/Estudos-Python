@@ -1,33 +1,32 @@
-def decoratorsFactory(a=None, b=None, c=None):
+def parametrosDecorador(nome):
 
-    def functionsFactory(func):
+    def decorador(func):
 
-        print('decoradora')
+        print('decorador:', nome)
 
-        def aninhada(*args, **kwargs): # inner function ou aninhada
+        def novaFuncao(*args, **kwargs): # inner function ou aninhada
 
             print('Aninhada')
             res = func(*args, **kwargs)
-            return res
+            final = f'{res} {nome}'
+            return final
         
-        return aninhada
+        return novaFuncao
     
-    return functionsFactory
+    return decorador
 
 
-@decoratorsFactory(1, 2, 3) # python decora automaticamente
+@parametrosDecorador('soma') # python decora automaticamente
 def soma(x, y): # função sendo decorada
     return x + y
     
 
 
-decoradora = decoratorsFactory()
-multiplica = decoradora(lambda x , y: x * y)
+
 
 dezMaisCinco = soma(10, 5)
-dezVezesCinco = multiplica(10, 5)
+
 
 print(dezMaisCinco)
-print(dezVezesCinco)
 
     
