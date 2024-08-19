@@ -5,8 +5,8 @@ caminhoArquivo += 'arquivo.txt'
 
 # arquivo.close()
 
-with open(caminhoArquivo, 'w+')as arquivo:
-    arquivo.write('Seja bem vindo\n')
+with open(caminhoArquivo, 'w+', encoding='utf-8')as arquivo:
+    arquivo.write('atenção\n')
     arquivo.write('Vagabundo\n') #escreve no arquivo
     # arquivo.seek(0, 0)# mecher o cursos do arquivo
     arquivo.writelines(
