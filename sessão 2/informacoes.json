@@ -1,0 +1,24 @@
+{
+  "nome": "Lucas Bassora",
+  "sobrenome": "da Silva",
+  "endereços": [
+    {
+      "Rua": "R1",
+      "numero": "21"
+    },
+    {
+      "Rua": "R2",
+      "numero": "32"
+    }
+  ],
+  "altura": 1.78,
+  "numerosPreferidos": [
+    2,
+    4,
+    5,
+    6,
+    10
+  ],
+  "dev": true,
+  "Nada": null
+}
