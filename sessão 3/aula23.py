@@ -14,5 +14,6 @@ try:
 except MyError as error:
     print(error.__class__.__name__)
     print(error.args)
+    exception_ = OtherError('Outro erro')
     print()
-    raise
+    raise exception_ from error
