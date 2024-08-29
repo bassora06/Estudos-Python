@@ -1,39 +1,35 @@
 from abc import ABC
 
 class Conta(ABC):
-    def __init__(self, agencia : int, numeroConta: int, saldo: float):
-        self._agencia = agencia
-        self._numeroConta = numeroConta
-        self._saldo = saldo
-    
+    def __init__(self, agencia, conta, saldo):
+        self.agencia = agencia
+        self.conta = conta
+        self.saldo = saldo
+
+    @ABC.abstractmethod
+    def sacar(self, valor): ...
+
     def depositar(self, valor):
-        self._saldo += valor
+        self.saldo += valor
+        self.detalhes(f'(DEPÓSITO {valor})')
 
-    def sacar(self, valor, limite):
-        self.limite = limite
-        self._saldo -= valor
+    def detalhes(self, msg=''):
+        print(f'O seu saldo é {self.saldo:.2f} {msg}')
+        print('--')
 
-
-class ContaCorrente(Conta):
-    def __init__(self, agencia, numeroConta, saldo):
-        super().__init__(agencia, numeroConta, saldo)
-
-    def sacar(self, valor, limite = 2000):
-        return super().sacar(valor, limite)
-    
-    def depositar(self, valor):
-        return super().depositar(valor)
-    
 
 class ContaPoupanca(Conta):
-    def __init__(self, agencia: int, numeroConta, saldo):
-        super().__init__(agencia, numeroConta, saldo)
+    def sacar(self, valor):
+        valor_pos_saque = self.saldo - valor
 
-    def depositar(self, valor):
-        return super().depositar(valor)
+        if valor_pos_saque >= 0:
+            self.saldo -= valor
+            self.detalhes(f'(SAQUE {valor})')
+            return self.saldo
+
+        print('Não foi possível sacar o valor desejado')
+        self.detalhes(f'(SAQUE NEGADO {valor})')
     
-    def sacar(self, valor, limite = 1000):
-        return super().sacar(valor, limite)
 
 
 
