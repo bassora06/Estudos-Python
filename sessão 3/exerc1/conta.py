@@ -1,13 +1,13 @@
 import abc
 
 class Conta(abc.ABC):
-    def __init__(self, agencia, numero, saldo):
+    def __init__(self, agencia: int, numero: int, saldo: float = 0):
         self.agencia = agencia
         self.numero = numero
         self.saldo = saldo
 
     @abc.abstractmethod
-    def sacar(self, valor):
+    def sacar(self, valor: float) -> None:
         valorPosSaque = self.saldo - valor
 
         if valorPosSaque >= 0:
@@ -15,11 +15,13 @@ class Conta(abc.ABC):
             self.detalhes(f'O saque foi relizado com sucesso')
             return self.saldo
         self.detalhes(f'O saque não pode ser concluido: {valor} R$')
+        return self.saldo
         
 
     def depositar(self, valor):
         self.saldo += valor
         self.detalhes(f'O valor depositado foi de: {valor} R$')
+        return self.saldo
 
     def detalhes(self, msg=''):
         print(f'{msg}\nSaldo: {self.saldo:.2f} R$')
@@ -35,6 +37,7 @@ class ContaPoupanca(Conta):
             self.detalhes(f'O saque foi relizado com sucesso')
             return self.saldo
         self.detalhes(f'O saque não pode ser concluido, saque realizado: {valor} R$')
+        return self.saldo
 
 class ContaCorrente(Conta):
     def __init__(self, agencia, numero, saldo, limite=0):
@@ -50,7 +53,7 @@ class ContaCorrente(Conta):
             self.detalhes(f'O saque foi relizado com sucesso')
             return self.saldo
         self.detalhes(f'Seu limite é de: {self.limite}\nO saque não pode ser concluido, saque realizado: {valor} R$')
-
+        return self.saldo
 
 if __name__ == '__main__':
     # cp1 = ContaPoupanca(1, 2, 1000.40)
