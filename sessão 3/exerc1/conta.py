@@ -27,6 +27,11 @@ class Conta(abc.ABC):
         print(f'{msg}\nSaldo: {self.saldo:.2f} R$')
         print()
 
+    def __repr__(self):
+        class_name = type(self).__name__
+        attrs = f'({self.agencia!r}, {self.numero!r}, {self.saldo!r}, {self.limite!r})'
+        return f'{class_name}{attrs}'
+
 
 class ContaPoupanca(Conta):
     def sacar(self, valor):
