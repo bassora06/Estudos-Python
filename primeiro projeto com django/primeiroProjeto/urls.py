@@ -23,7 +23,6 @@ from sobre.views import sobre
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('home.urls')),
+    path('', home),
     path('sobre/', sobre)
-    
 ]
